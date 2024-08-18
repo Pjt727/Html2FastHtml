@@ -1,4 +1,5 @@
 # Html2FastHtml 
+Note for full supports use [HTMLtoFT](https://h2f.answer.ai/).
 This is small server meant to be ran locally allowing you to convert html to FastHtml components.
 The web server is made with [FastHtml](https://github.com/AnswerDotAI/fasthtml "fasthtml github") and
    uses [ruff](https://github.com/astral-sh/ruff "Ruff github") as a code formatter by default.
@@ -6,8 +7,7 @@ It works by making the submitted html into a tree using python's html parser and
    generating FastHtml components.
 Once the FastHtml component string is done it writes it to a file and then formats it.
 Any formatter configuration you wish to apply should work like normal.
-There are still some edge cases where it might not generate perfect html feel free to open
-   issues and PRs such as special html attribute names.
+There are still some edge cases where it might not generate perfect html.
 # demo
 ![Demo GIF](demo.gif)
 # setup
