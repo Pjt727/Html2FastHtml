@@ -14,9 +14,8 @@ PYTHON_KWS = [
 # Tags that need to be done through ft_hx
 MANUAL_TAGS = ["path"]
 
-AUTO_FORMATTER = os.environ.get("AUTO_FORMATTER", "ruff format")
 PATH_TO_FILE = os.environ.get("PATH_TO_FILE", os.path.join("out", "fasthtml.py"))
-AUTO_FORMATTER_CMD = os.environ.get("AUTO_FORMATTER_CMD", f"{AUTO_FORMATTER} {PATH_TO_FILE}")
+AUTO_FORMATTER_CMD = os.environ.get("AUTO_FORMATTER_CMD", f"ruff format {PATH_TO_FILE}")
 
 app,rt = fast_app()
 
