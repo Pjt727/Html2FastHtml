@@ -1,5 +1,5 @@
 # Html2FastHtml 
-Note for full supports use [HTMLtoFT](https://h2f.answer.ai/).
+Note for full support use [HTMLtoFT](https://h2f.answer.ai/).
 This is small server meant to be ran locally allowing you to convert html to FastHtml components.
 The web server is made with [FastHtml](https://github.com/AnswerDotAI/fasthtml "fasthtml github") and
    uses [ruff](https://github.com/astral-sh/ruff "Ruff github") as a code formatter by default.
