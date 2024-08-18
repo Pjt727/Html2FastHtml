@@ -51,6 +51,7 @@ class FastHtmlParser(HTMLParser):
 
     def handle_data(self, data):
         data = data.strip()
+
         data = None if data == "" else data
         self.current.data = data
 
@@ -76,7 +77,20 @@ class FastHtmlParser(HTMLParser):
             self.fast_html_string += node.tag.capitalize().replace("-", "_") + "(" # )
         # data
         if node.data is not None:
-            self.fast_html_string += f'"{node.data}"'
+            double_quotes = '"' in node.data
+            single_quotes = "'" in node.data
+            new_line = '\r' in node.data or '\n' in node.data
+            if (double_quotes and single_quotes) or new_line:
+                data = node.data
+                if data[-1] == "'":
+                    # in the case where the last character is ' it needs to be escaped
+                    data = data[:-1] + "\\" + data[-1]
+                self.fast_html_string += f"'''{data}'''"
+            elif double_quotes:
+                self.fast_html_string += f"'{node.data}'"
+            else:
+                self.fast_html_string += f'"{node.data}"'
+
             if node.children or node.attrs:
                 self.fast_html_string += ","
         # other nodes
@@ -100,10 +114,12 @@ class FastHtmlParser(HTMLParser):
                 continue
             single_quotes = "'" in attr_value
             double_quotes = '"' in attr_value
-            if single_quotes and double_quotes:
+            new_line = '\r' in attr_value or '\n' in attr_value
+            # attributes get put in '''''' if the span multiple lines
+            if (single_quotes and double_quotes) or new_line:
                 if attr_value[-1] == "'":
                     # in the case where the last character is ' it needs to be escaped
-                    modified_string = attr_value[:-1] + "\\" + attr_value[-1]
+                    attr_value = attr_value[:-1] + "\\" + attr_value[-1]
                 py_value = f"'''{attr_value}'''"
             elif double_quotes:
                 py_value = f"'{attr_value}'"
@@ -223,3 +239,4 @@ def post(fast_html_body: ToFastHtmlRequest):
             rows="20"), Script(script_contents)
 
 serve()
+

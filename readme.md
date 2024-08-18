@@ -7,7 +7,7 @@ It works by taking forming the submitted html into a tree and then traverses tha
 Once the FastHtml component string is done it writes it to a file and then formats it.
 Any formatter configuration you wish to apply should work like normal.
 # demo
-
+![Demo GIF](demo.gif)
 # setup
 - Clone the repository
 - Install dependencies (pip venv example below)
