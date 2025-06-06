@@ -1,11 +1,12 @@
 # Html2FastHtml 
-Note for full support and continuous use [HTMLtoFT](https://h2f.answer.ai/).
+Note fastHTML has an official online option [HTMLtoFT](https://h2f.answer.ai/).
 This is small server meant to run locally allowing you to convert HTML to FastHTML components.
 The web server is made with [FastHTML](https://github.com/AnswerDotAI/fasthtml "fasthtml github") and
    uses [ruff](https://github.com/astral-sh/ruff "Ruff github") as a code formatter by default.
-This currently does not use FastHTML functions to convert HTML;
-it works by parsing the input into a tree using python's HTML parser and then traverses that tree
-   generating FastHTML components.
+You can use a the official HTMLtoFT function or my own implementation which
+works by parsing the input into a tree using python's HTML parser and then traverses that tree
+   generating FastHTML components. 
+There are a few edge cases where they would produce different results.
 Once the FastHTML component string is done it writes it to a file and then formats it.
 Any formatter configuration you wish to apply should work like normal.
 There are edge cases where it might not generate the correct HTML.
